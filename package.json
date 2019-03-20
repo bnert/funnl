@@ -1,0 +1,17 @@
+{
+  "name": "funjs",
+  "version": "0.0.1",
+  "description": "A library for functions that help you be functional in JS",
+  "main": "index.js",
+  "repository": "https://github.com/brent-soles/funjs.git",
+  "author": "Brent Soles <brentsoles@protonmail.com> (brentsoles.com)",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "run": "node index.js",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "jest": "^24.5.0"
+  }
+}
