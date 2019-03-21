@@ -8,5 +8,6 @@
  */
 
 module.exports = {
-  funnl: require('./lib/funnl')
+  funnl: require('./lib/funnl'),
+  funnlAsync: require('./lib/funnlAsync')
 }

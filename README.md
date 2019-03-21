@@ -44,3 +44,38 @@ const res = funnl([
 ]);
 console.log(res) // 10
 ```
+
+# async/await
+
+funnl supports async/await functionality with the addition of funnlAsync() function.
+
+To calculate async values, you can declare async/await in the chain, or inside
+a function.
+
+Example of async/await in a chain:
+
+```javascript
+funnlAsync([
+  async () => {
+    await setTimeout(() => {}, 200); // Pause for 200ms to mock network call
+    return { users: 5 };
+  },
+  ({ users }) => console.log(`There are ${users} users online!`)
+]); // Output: There are 5 users online!
+```
+
+And you can do the same thing inside a function:
+
+```javascript
+const sendToFunnl = async (value) => {
+  return await funnlAsync([
+    async () => {
+      await setTimeout(() => {}, 200); // Pause for 200ms to mock network call
+      return { users: value };
+    },
+    ({ users }) => console.log(`There are ${users} users online!`)
+  ]);
+}
+
+sendToFunnl(200); // There are 200 users online!
+```
