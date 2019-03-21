@@ -1,8 +1,6 @@
 # funnl
 
-### fun.js ###
-
-The main purpose of this package is to have a group of functions that have a functional aspect to them.
+The main purpose of this package is to have a utility which can pipe data easily and flexibly.
 
 ### WARNING ###
 
