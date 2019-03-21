@@ -6,6 +6,7 @@
  * 
  * Author: Brent Soles (brentsoles@protonmail.com)
  */
+
 module.exports = {
-  pipe: require('./lib/pipe')
+  funnl: require('./lib/funnl')
 }

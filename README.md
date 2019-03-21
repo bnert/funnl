@@ -1,4 +1,4 @@
-# Welcome to a super punny package
+# funnl
 
 ### fun.js ###
 
@@ -6,29 +6,30 @@ The main purpose of this package is to have a group of functions that have a fun
 
 ### WARNING ###
 
-This package is currently under development.
+This package is currently under development. 
 
-### To start ###
+### To build ###
 
 Clone the repo, then run `npm install` or `yarn init`
 
 ### Code examples ###
 
 ```javascript
-
 // Import
-const { pipe } = require('funjs');
+const { funnl } = require('funnl');
 
 // Two ways:
 
+// 1.
 // First is to use callback functions
-const res = pipe([
+const res = funnl([
   () => "Hello",
   (hello) => `${hello} World!` 
 ]);
 console.log(res); // "Hello Wprld!"
 ...
 
+// 2.
 // Second, define, and then pass functions
 // Notice, when a function has more than one argument,
 // we pass an array with the first element being the function.
@@ -39,7 +40,7 @@ console.log(res); // "Hello Wprld!"
 //   add(2, 8)
 // given the example below.
 const add(a, b) => a + b;
-const res = pipe([
+const res = funnl([
   2,
   [add, 8]
 ]);

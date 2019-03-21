@@ -1,9 +1,9 @@
 {
-  "name": "funjs",
-  "version": "0.0.1",
-  "description": "A library for functions that help you be functional in JS",
+  "name": "funnl",
+  "version": "0.0.2",
+  "description": "Piping function for funneling data",
   "main": "index.js",
-  "repository": "https://github.com/brent-soles/funjs.git",
+  "repository": "https://github.com/brent-soles/funnl.git",
   "author": "Brent Soles <brentsoles@protonmail.com> (brentsoles.com)",
   "license": "MIT",
   "private": false,
@@ -13,5 +13,6 @@
   },
   "devDependencies": {
     "jest": "^24.5.0"
-  }
+  },
+  "dependencies": {}
 }
