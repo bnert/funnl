@@ -2,7 +2,7 @@
  * Functional library for JS
  * 
  * Current functions:
- * *** pipe
+ * *** funnl -> a pipe function
  * 
  * Author: Brent Soles (brentsoles@protonmail.com)
  */
