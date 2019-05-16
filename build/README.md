@@ -20,12 +20,11 @@ const { funnl } = require('funnl');
 
 // 1.
 // First is to use callback functions
-const res = funnl()
-  .through(
-    () => "Hello",
-    (hello) => `${hello} World!` 
-  );
-console.log(res); // "Hello World!"
+const res = funnl([
+  () => "Hello",
+  (hello) => `${hello} World!` 
+]);
+console.log(res); // "Hello Wprld!"
 ...
 
 // 2.
@@ -39,10 +38,10 @@ console.log(res); // "Hello World!"
 //   add(2, 8)
 // given the example below.
 const add(a, b) => a + b;
-const res = funnl(2)
-  .through(
-    [add, 8]
-  );
+const res = funnl([
+  2,
+  [add, 8]
+]);
 console.log(res) // 10
 ```
 
