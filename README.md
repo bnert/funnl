@@ -6,77 +6,78 @@ The main purpose of this package is to have a utility which can pipe data easily
 
 This package is currently under development. 
 
-### To build ###
-
-Clone the repo, then run `npm install` or `yarn init`
-
-### Code examples ###
-
+### How to use
 ```javascript
-// Import
-const { funnl } = require('funnl');
+// Using common.js modules
+const funnl = require('funnl')
 
-// Two ways:
+// or ES6 Modules
+// import fully from 'funnl'
 
-// 1.
-// First is to use callback functions
-const res = funnl()
-  .through(
-    () => "Hello",
-    (hello) => `${hello} World!` 
-  );
-console.log(res); // "Hello World!"
-...
+const validBalanceOps = ['inc', 'dec']
 
-// 2.
-// Second, define, and then pass functions
-// Notice, when a function has more than one argument,
-// we pass an array with the first element being the function.
-// The result of the first element in the pipe is then passed
-// as the first arg of the next function call, then
-// the rest of the args get passed along, so the eventual
-// function call looks like:
-//   add(2, 8)
-// given the example below.
-const add(a, b) => a + b;
-const res = funnl(2)
-  .through(
-    [add, 8]
-  );
-console.log(res) // 10
-```
-
-# async/await
-
-funnl supports async/await functionality with the addition of funnlAsync() function.
-
-To calculate async values, you can declare async/await in the chain, or inside
-a function.
-
-Example of async/await in a chain:
-
-```javascript
-funnlAsync([
-  async () => {
-    await setTimeout(() => {}, 200); // Pause for 200ms to mock network call
-    return { users: 5 };
-  },
-  ({ users }) => console.log(`There are ${users} users online!`)
-]); // Output: There are 5 users online!
-```
-
-And you can do the same thing inside a function:
-
-```javascript
-const sendToFunnl = async (value) => {
-  return await funnlAsync([
-    async () => {
-      await setTimeout(() => {}, 200); // Pause for 200ms to mock network call
-      return { users: value };
-    },
-    ({ users }) => console.log(`There are ${users} users online!`)
-  ]);
+const balanceData = {
+  [1]: 200
 }
 
-sendToFunnl(200); // There are 200 users online!
+// Example Object to operate on:
+const updateBalancePayload = {
+  id: 1,
+  op: 'inc',
+  amount: 100
+}
+
+const checkId = (data) => {
+  console.log(data)
+  if (data.id !== 1)
+    throw new Error('Invalid id')
+  return data
+}
+
+// Balance
+const applyUpdate = ({ id, op, amount }, data) => {
+  if (!validBalanceOps.includes(op))
+    throw new Error('Invalid operation specified')
+
+  if (op === 'inc')
+    data[id] += amount
+  else if (op === 'dec')
+    data[id] -= amount
+
+  return { status: 'ok' }
+}
+
+const handleBalanceUpdate = (data, balancePayload) => funnl(balancePayload)(checkId, [applyUpdate, balanceData])
+
+// Will print:
+// { '1': 200 }
+// { status: 'ok' }
+// { '1': 300 }
+console.log(balanceData)
+console.log(handleBalanceUpdate(balanceData, updateBalancePayload))
+console.log(balanceData)
+```
+
+## Install
+### Using `npm`
+```
+$ npm install --save funnl
+```
+
+### Using `yarn`
+```
+$ yarn add funnl
+```
+
+## Build
+### Using `npm`
+```
+$ git clone https://github.com/brent-soles/funnl
+$ cd funnl && npm install
+```
+
+### Using `yarn`
+```
+$ git clone https://github.com/brent-soles/funnl
+$ cd funnl && yarn install
 ```
