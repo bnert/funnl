@@ -2,10 +2,6 @@
 
 The main purpose of this package is to have a utility which can pipe data easily and flexibly.
 
-### WARNING ###
-
-This package is currently under development. 
-
 ### How to use
 ```javascript
 // Using common.js modules
