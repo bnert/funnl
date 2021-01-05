@@ -47,6 +47,10 @@ const applyUpdate = ({ id, op, amount }, data) => {
   return { status: 'ok' }
 }
 
+// Note: passing an array will signal to funnl that the rest of the args in the array should be applied after
+// the first.
+// In the example below the `balancePayload` will be passed as the first arg to applyUpdate, and the second
+// arg will be `balanceData`
 const handleBalanceUpdate = (data, balancePayload) => funnl(balancePayload)(checkId, [applyUpdate, balanceData])
 
 // Will print:
