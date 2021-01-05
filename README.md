@@ -50,7 +50,7 @@ const applyUpdate = ({ id, op, amount }, data) => {
 // the first.
 // In the example below the `balancePayload` will be passed as the first arg to applyUpdate, and the second
 // arg will be `balanceData`
-const handleBalanceUpdate = (data, balancePayload) => funnl(balancePayload)(checkId, [applyUpdate, balanceData])
+const handleBalanceUpdate = (data, balancePayload) => funnl(balancePayload)(checkId, [applyUpdate, data])
 
 // Will print:
 // { '1': 200 }
