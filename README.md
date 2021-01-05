@@ -34,7 +34,6 @@ const checkId = (data) => {
   return data
 }
 
-// Balance
 const applyUpdate = ({ id, op, amount }, data) => {
   if (!validBalanceOps.includes(op))
     throw new Error('Invalid operation specified')
