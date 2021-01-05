@@ -24,7 +24,6 @@ const updateBalancePayload = {
 }
 
 const checkId = (data) => {
-  console.log(data)
   if (data.id !== 1)
     throw new Error('Invalid id')
   return data
